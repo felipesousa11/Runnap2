@@ -1,11 +1,14 @@
 import React ,{useState, useEffect} from 'react';
-import { Text, View, Image, TouchableOpacity,FlatList } from 'react-native';
-import { FontAwesome5, Entypo, FontAwesome,Fontisto,Feather,MaterialCommunityIcons,Ionicons   } from '@expo/vector-icons';
+import { Text, View, Image, TouchableOpacity,FlatList, Modal } from 'react-native';
+import { FontAwesome5, AntDesign ,Feather,MaterialCommunityIcons,Ionicons   } from '@expo/vector-icons';
 import {styles} from '../../assets/style/Style';
 import Menutopo from '../../assets/components/Menutopo';
 import firebase from '../../firebaseConfig';
+import Atividade from './Atividade';
 
 export default function Feed ({ navigation }){
+
+    const [atividade, setAtividade] = useState(false);
 
     if (firebase.auth().currentUser !==null){
         
@@ -34,7 +37,14 @@ export default function Feed ({ navigation }){
     return(    
         <View style={[styles.containerfeed, styles.containertop]}>
            <Menutopo title='Feed' navigation={navigation}/>
-
+            <View style={{paddingLeft:10}}>
+                <TouchableOpacity
+                        onPress={() =>{setAtividade(!atividade);}}
+                        style={styles.btnDark}
+                >
+                <AntDesign name="pluscircle" size={50} color="red" />
+                </TouchableOpacity>
+            </View>
            <FlatList
                     data={data}
                     renderItem={({item})=>(
@@ -102,6 +112,16 @@ export default function Feed ({ navigation }){
                                 </TouchableOpacity>
                                         
                                 </View>
+                                <Modal 
+                                    animationType='slide' visible={atividade}
+                                    onRequestClose={() => {setAtividade(false);}}
+                                >
+                                <TouchableOpacity style={styles.buttonMenu} 
+                                onPress={() => {setAtividade(!atividade);}}
+                                >
+                                </TouchableOpacity>
+                        <Atividade/>
+           </Modal>
                         </View>
                         
                         )}

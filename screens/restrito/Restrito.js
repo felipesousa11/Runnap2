@@ -2,7 +2,7 @@ import React ,{useEffect} from 'react';
 import { StyleSheet, Text, View, SafeAreaView, TouchableOpacity, BackHandler,Alert  } from 'react-native';
 import { Entypo, FontAwesome,Fontisto,Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Desafios, Perfil, Feed, Atividade, Cadastrofull} from '../index';
+import {Desafios, Perfil, Feed, Atividade, Cadastrofull, Gravar} from '../index';
 
 
 export default function Restrito ({ navigation }){
@@ -49,7 +49,7 @@ export default function Restrito ({ navigation }){
                 <Entypo name="trophy" size={24} color={color} />
               );
             }
-            else if (route.name === 'Atividade') {
+            else if (route.name === 'Gravar') {
               return (
                 <Feather name="activity" size={24} color={color} />
               );
@@ -71,7 +71,7 @@ export default function Restrito ({ navigation }){
 
                 <Tab.Screen name="Desafios" component={Desafios} options={{title:'Desafios'}}/>
                 <Tab.Screen name="Feed" component={Feed} options={{title:'Feed',}}/>
-                <Tab.Screen name="Atividade" component={Atividade} options={{title:'Atividade'}}/>
+                <Tab.Screen name="Gravar" component={Gravar} options={{title:'Gravar'}}/>
                 <Tab.Screen name="Perfil" component={Perfil} options={{title:'Perfil'}}/>
              
       </Tab.Navigator>

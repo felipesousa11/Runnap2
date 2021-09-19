@@ -5,6 +5,7 @@ import Perfil from './restrito/Perfil';
 import Desafios from './restrito/Desafios';
 import Atividade from './restrito/Atividade';
 import Feed from './restrito/Feed';
+import Gravar from './restrito/Gravar';
 
 export {
     Login,
@@ -14,5 +15,6 @@ export {
     Desafios,
     Atividade,
     Feed,
+    Gravar,
 
 };
